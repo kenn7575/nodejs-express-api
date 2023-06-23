@@ -13,8 +13,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     return data;
   };
-  const data = await RetreiveWeatherData(52.520008, 13.404954);
+  const data = RetreiveWeatherData(52.520008, 13.404954);
   return res.json({
-    message: `weatherData ${data}!`,
+    weatherData: data,
   });
 }
