@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 
-export default function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   const RetreiveWeatherData = async (lat, lon) => {
     var response = await fetch(
       "https://api.open-meteo.com/v1/forecast?latitude=" +
@@ -13,7 +13,7 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
 
     return data;
   };
-  const data = RetreiveWeatherData(52.520008, 13.404954);
+  const data = await RetreiveWeatherData(52.520008, 13.404954);
   return res.json({
     message: `weatherData ${data}!`,
   });
